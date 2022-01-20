@@ -15,13 +15,15 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private cartService: CartService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
-    
-    this.product = products.find(product => product.id === productIdFromRoute);
+
+    this.product = products.find(
+      (product) => product.id === productIdFromRoute
+    );
   }
 
   addToCart(product: Product) {
@@ -32,6 +34,5 @@ export class ProductDetailsComponent implements OnInit {
   // from pluralsight tutorial:
   onBack(): void {
     this.router.navigate(['/']);
-
   }
 }
